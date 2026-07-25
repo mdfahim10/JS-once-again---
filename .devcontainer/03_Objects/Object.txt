@@ -1,0 +1,359 @@
+# JavaScript Objects (Complete Short Notes)
+
+## What is an Object?
+
+* An **Object** stores data in **key-value pairs**.
+* Keys are called **properties**, and values can be of any data type (string, number, array, object, function, etc.).
+
+```javascript
+let person = {
+    name: "Alex",
+    age: 22,
+    city: "Kolkata"
+};
+```
+
+---
+
+# Accessing Properties
+
+## Dot Notation
+
+```javascript
+console.log(person.name);
+console.log(person.age);
+```
+
+## Bracket Notation
+
+```javascript
+console.log(person["name"]);
+console.log(person["age"]);
+```
+
+> Use **bracket notation** when the property name is stored in a variable.
+
+```javascript
+let key = "city";
+
+console.log(person[key]);
+```
+
+---
+
+# Adding Properties
+
+```javascript
+person.country = "India";
+
+console.log(person);
+```
+
+---
+
+# Updating Properties
+
+```javascript
+person.age = 23;
+```
+
+---
+
+# Deleting Properties
+
+```javascript
+delete person.city;
+```
+
+---
+
+# Object Methods
+
+Objects can also store functions.
+
+```javascript
+let person = {
+    name: "Alex",
+
+    greet() {
+        console.log("Hello!");
+    }
+};
+
+person.greet();
+```
+
+---
+
+# Nested Objects
+
+```javascript
+let student = {
+    name: "Alex",
+
+    address: {
+        city: "Kolkata",
+        state: "West Bengal"
+    }
+};
+
+console.log(student.address.city);
+```
+
+---
+
+# Arrays Inside Objects
+
+```javascript
+let student = {
+    name: "Alex",
+    skills: ["HTML", "CSS", "JavaScript"]
+};
+
+console.log(student.skills[1]);
+```
+
+---
+
+# Object Inside Array
+
+```javascript
+let students = [
+    { name: "Alex", age: 22 },
+    { name: "John", age: 23 }
+];
+
+console.log(students[0].name);
+```
+
+---
+
+# Loop Through Object
+
+## `for...in`
+
+```javascript
+let person = {
+    name: "Alex",
+    age: 22
+};
+
+for (let key in person) {
+    console.log(key, person[key]);
+}
+```
+
+---
+
+# Object Methods
+
+## `Object.keys()`
+
+Returns all keys.
+
+```javascript
+Object.keys(person);
+```
+
+---
+
+## `Object.values()`
+
+Returns all values.
+
+```javascript
+Object.values(person);
+```
+
+---
+
+## `Object.entries()`
+
+Returns key-value pairs.
+
+```javascript
+Object.entries(person);
+```
+
+---
+
+## `Object.assign()`
+
+Copies or merges objects.
+
+```javascript
+let obj1 = { a: 1 };
+let obj2 = { b: 2 };
+
+let obj3 = Object.assign({}, obj1, obj2);
+
+console.log(obj3);
+```
+
+---
+
+# Spread Operator
+
+```javascript
+let person = {
+    name: "Alex",
+    age: 22
+};
+
+let copy = {
+    ...person,
+    city: "Kolkata"
+};
+```
+
+---
+
+# Object Destructuring
+
+Extract properties into variables.
+
+```javascript
+let person = {
+    name: "Alex",
+    age: 22,
+    city: "Kolkata"
+};
+
+let { name, age } = person;
+
+console.log(name);
+console.log(age);
+```
+
+---
+
+## Rename Variables
+
+```javascript
+let { name: fullName } = person;
+
+console.log(fullName);
+```
+
+---
+
+## Default Value
+
+```javascript
+let { country = "India" } = person;
+
+console.log(country);
+```
+
+---
+
+# Optional Chaining (`?.`)
+
+Avoids errors if a property doesn't exist.
+
+```javascript
+console.log(person.address?.city);
+```
+
+Returns `undefined` instead of throwing an error.
+
+---
+
+# JSON (JavaScript Object Notation)
+
+JSON is a **text format** used to exchange data between a server and a client.
+
+### JSON Rules
+
+* Keys must be inside **double quotes**.
+* Strings use **double quotes**.
+* No functions or comments.
+
+Example JSON:
+
+```json
+{
+    "name": "Alex",
+    "age": 22,
+    "city": "Kolkata"
+}
+```
+
+---
+
+# Convert Object → JSON
+
+## `JSON.stringify()`
+
+```javascript
+let person = {
+    name: "Alex",
+    age: 22
+};
+
+let json = JSON.stringify(person);
+
+console.log(json);
+```
+
+Output:
+
+```text
+{"name":"Alex","age":22}
+```
+
+---
+
+# Convert JSON → Object
+
+## `JSON.parse()`
+
+```javascript
+let json = '{"name":"Alex","age":22}';
+
+let obj = JSON.parse(json);
+
+console.log(obj.name);
+```
+
+---
+
+# Difference: Object vs JSON
+
+| Object                           | JSON                            |
+| -------------------------------- | ------------------------------- |
+| JavaScript data structure        | Text format                     |
+| Keys may be unquoted (or quoted) | Keys **must** use double quotes |
+| Can contain functions            | Cannot contain functions        |
+| Used inside JavaScript           | Used for data exchange          |
+
+---
+
+# Interview Points
+
+* Objects store **key-value pairs**.
+* Access properties using **dot** or **bracket** notation.
+* `delete` removes a property.
+* `Object.keys()` → Keys.
+* `Object.values()` → Values.
+* `Object.entries()` → Key-value pairs.
+* Destructuring extracts properties into variables.
+* `JSON.stringify()` → Object to JSON string.
+* `JSON.parse()` → JSON string to Object.
+
+---
+
+# One-Line Revision
+
+* **Create:** `{ }`
+* **Access:** `obj.key`, `obj["key"]`
+* **Add:** `obj.newKey = value`
+* **Update:** `obj.key = value`
+* **Delete:** `delete obj.key`
+* **Loop:** `for...in`
+* **Methods:** `Object.keys()`, `Object.values()`, `Object.entries()`, `Object.assign()`
+* **Copy/Merge:** `...`
+* **Destructure:** `let { name, age } = obj`
+* **Safe Access:** `obj?.property`
+* **Object → JSON:** `JSON.stringify()`
+* **JSON → Object:** `JSON.parse()`
