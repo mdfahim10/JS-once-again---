@@ -1,0 +1,145 @@
+1. if Statement
+Used when you want to execute code only if a condition is true.
+if(condition){
+    // code
+}
+2. if...else
+Executes one block if true, another if false.
+if(condition){
+
+}
+else{
+
+}
+3. else if
+Checks multiple conditions.
+if(){
+
+}
+else if(){
+
+}
+else{
+
+}
+4. Comparison Operators
+Operator	Meaning
+==	Equal (checks value only)
+===	Strict Equal (value + datatype)
+!=	Not Equal
+!==	Strict Not Equal
+>	Greater Than
+<	Less Than
+>=	Greater Than or Equal
+<=	Less Than or Equal
+Always prefer === over ==.
+5. Logical Operators
+AND (&&)
+All conditions must be true.
+true && true
+Result
+true
+OR (||)
+Only one condition needs to be true.
+true || false
+Result
+true
+NOT (!)
+Reverses the boolean value.
+!true
+Result
+false
+6. Nested if
+An if inside another if.
+if(condition1){
+
+    if(condition2){
+
+    }
+
+}
+7. Truthy Values
+These behave like true:
+"Hello"
+
+[]
+
+{}
+
+42
+
+-1
+
+"0"
+
+"false"
+8. Falsy Values
+Only 7 values are falsy:
+false
+
+0
+
+-0
+
+0n
+
+""
+
+null
+
+undefined
+
+NaN
+Everything else is truthy.
+9. Nullish Coalescing Operator (??)
+Returns the right value only if the left value is null or undefined.
+let value = null ?? "Default";
+Output
+Default
+Unlike ||, it does not replace values like 0, false, or "".
+10. Ternary Operator
+Short form of if...else.
+condition ? trueValue : falseValue;
+Example
+let result = age >= 18 ? "Adult" : "Minor";
+11. Switch Statement
+Used when checking one variable against multiple values.
+switch(value){
+
+    case x:
+        break;
+
+    case y:
+        break;
+
+    default:
+}
+Remember to use break, otherwise execution falls through to the next case.
+Interview Questions
+Difference between == and ===
+== compares only values.
+=== compares both value and datatype.
+Difference between || and ??
+0 || 10
+Output
+10
+Because 0 is falsy.
+0 ?? 10
+Output
+0
+Because 0 is not null or undefined.
+When should you use switch?
+When comparing the same variable against many fixed values. It is often cleaner than writing many else if statements.
+One-Line Revision
+if → Execute code if a condition is true.
+if...else → Choose between two blocks.
+else if → Check multiple conditions.
+=== → Compare value and datatype.
+&& → All conditions must be true.
+|| → At least one condition must be true.
+! → Reverse a boolean.
+Nested if → if inside another if.
+Truthy/Falsy → Determines how values behave in conditions.
+?? → Default only for null or undefined.
+Ternary (? :) → Short form of if...else.
+switch → Cleaner alternative for multiple fixed-value comparisons.
