@@ -1,0 +1,114 @@
+# JavaScript `for` Loop — Notes
+
+## Definition
+
+* Used to **repeat a block of code**.
+* Best when the **number of iterations is known**.
+
+## Syntax
+
+```javascript
+for (initialization; condition; update) {
+    // code
+}
+```
+
+## Parts
+
+1. **Initialization** → Runs once at the beginning.
+2. **Condition** → Checked before every iteration.
+3. **Body** → Executes if condition is `true`.
+4. **Update** → Runs after every iteration.
+
+### Execution Flow
+
+```text
+Initialization
+      ↓
+  Condition
+      ↓
+    true
+      ↓
+   Body
+      ↓
+   Update
+      ↓
+  Condition
+      ↓
+    false
+      ↓
+    Stop
+```
+
+## Common Updates
+
+```javascript
+i++
+i--
+i += 2
+i -= 2
+i *= 2
+```
+
+## `break`
+
+* Immediately **stops** the loop.
+
+## `continue`
+
+* **Skips the current iteration** and moves to the next one.
+
+## Nested `for` Loop
+
+* A `for` loop inside another `for` loop.
+* Commonly used for **patterns, matrices, and 2D arrays**.
+
+## Array Traversal
+
+```javascript
+for (let i = 0; i < arr.length; i++)
+```
+
+* Array index starts from `0`.
+* Last index is `arr.length - 1`.
+
+## String Traversal
+
+```javascript
+for (let i = 0; i < str.length; i++)
+```
+
+* Strings can be accessed using `str[i]`.
+
+## Multiple Variables
+
+```javascript
+for (let i = 1, j = 10; i <= 5; i++, j--)
+```
+
+## Infinite Loop
+
+* Happens when the condition never becomes `false`.
+
+## Complexity
+
+* Single loop → **O(n)**
+* Nested loop → **O(n²)**
+
+## Important Interview Points
+
+* `for` → Known/repeated iterations.
+* `break` → Exit loop.
+* `continue` → Skip current iteration.
+* `i++` → Increment by 1.
+* `i--` → Decrement by 1.
+* `arr.length` → Number of elements.
+* First array index → `0`.
+* Last array index → `length - 1`.
+* Nested loops → Often **O(n²)**.
+
+
+
+## Quick Revision
+
+**`for` = Initialization → Condition → Body → Update → Repeat**.

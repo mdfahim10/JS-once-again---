@@ -1,0 +1,176 @@
+# JavaScript `while` Loop — Notes
+
+## Definition
+
+* `while` loop repeatedly executes code **as long as the condition is `true`**.
+* Best when the **number of iterations is not known beforehand**.
+
+## Syntax
+
+```javascript
+while (condition) {
+    // code
+}
+```
+
+## Basic Structure
+
+```text
+Initialization
+      ↓
+  Condition
+      ↓
+    true
+      ↓
+    Body
+      ↓
+   Update
+      ↓
+  Condition
+      ↓
+   false
+      ↓
+    Stop
+```
+
+## Important Parts
+
+### 1. Initialization
+
+* Usually written **before** the loop.
+
+```javascript
+let i = 1;
+```
+
+### 2. Condition
+
+* Checked **before every iteration**.
+* If `true` → loop executes.
+* If `false` → loop stops.
+
+```javascript
+while (i <= 5)
+```
+
+### 3. Update
+
+* Usually written **inside the loop**.
+* Changes the variable so the loop can eventually stop.
+
+```javascript
+i++;
+```
+
+## Example Structure
+
+```javascript
+let i = 1;
+
+while (i <= 5) {
+    console.log(i);
+    i++;
+}
+```
+
+## Infinite Loop
+
+If the condition never becomes `false`, the loop runs forever.
+
+```javascript
+let i = 1;
+
+while (i <= 5) {
+    console.log(i);
+}
+```
+
+Here `i` never changes, so the condition always remains `true`.
+
+## `break`
+
+* Immediately **stops** the loop.
+
+```javascript
+while (condition) {
+    if (condition) {
+        break;
+    }
+}
+```
+
+## `continue`
+
+* Skips the **current iteration** and moves to the next iteration.
+
+```javascript
+while (condition) {
+    if (condition) {
+        continue;
+    }
+}
+```
+
+> Be careful with `continue` in a `while` loop: make sure the loop variable is updated appropriately, otherwise you can create an infinite loop.
+
+## Nested `while` Loop
+
+A `while` loop inside another `while` loop.
+
+```javascript
+while (condition) {
+
+    while (condition) {
+
+    }
+
+}
+```
+
+Commonly used for:
+
+* Patterns
+* Matrices
+* 2D arrays
+
+## `for` vs `while`
+
+| `for`                                      | `while`                               |
+| ------------------------------------------ | ------------------------------------- |
+| Best when iterations are known             | Best when iterations are unknown      |
+| Initialization, condition, update together | Usually written separately            |
+| Common for counting                        | Common for condition-based repetition |
+
+## Common Uses
+
+* Number calculations
+* Digit extraction
+* Reverse a number
+* Sum of digits
+* Fibonacci
+* Prime checking
+* Reading data until a condition is met
+* Menu-driven programs
+
+## Complexity
+
+For a loop running `n` times:
+
+**Time:** `O(n)`
+
+Nested `while` loops are commonly:
+
+**Time:** `O(n²)`
+
+
+
+## Quick Revision
+
+```text
+while = Condition → Body → Update → Repeat
+
+break    → Exit loop
+continue → Skip current iteration
+```
+
+**Main difference:** In a `for` loop, initialization, condition, and update are usually together; in a `while` loop, you manage them separately.

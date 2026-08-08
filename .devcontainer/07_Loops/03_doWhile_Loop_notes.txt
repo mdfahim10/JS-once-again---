@@ -1,0 +1,171 @@
+# JavaScript `do...while` Loop — Notes
+
+## Definition
+
+* `do...while` executes the code **at least once**.
+* The condition is checked **after** executing the loop body.
+* Useful when the code must run at least once.
+
+## Syntax
+
+```javascript
+do {
+    // code
+} while (condition);
+```
+
+## Execution Flow
+
+```text
+Initialization
+      ↓
+   Loop Body
+      ↓
+   Update
+      ↓
+  Condition
+      ↓
+ true → Repeat
+      ↓
+ false
+      ↓
+   Stop
+```
+
+## Important Difference
+
+### `while`
+
+```javascript
+while (condition) {
+    // code
+}
+```
+
+Condition is checked **before** execution.
+
+### `do...while`
+
+```javascript
+do {
+    // code
+} while (condition);
+```
+
+Condition is checked **after** execution.
+
+Therefore, `do...while` runs **at least once**, even if the condition is initially `false`.
+
+## Example
+
+```javascript
+let i = 10;
+
+do {
+    console.log(i);
+    i++;
+} while (i < 5);
+```
+
+Output:
+
+```text
+10
+```
+
+Even though `10 < 5` is `false`, the code runs once.
+
+## `break`
+
+* Immediately stops the loop.
+
+```javascript
+do {
+    if (condition) {
+        break;
+    }
+} while (condition);
+```
+
+## `continue`
+
+* Skips the current iteration and continues with the next iteration.
+* Be careful to update the loop variable properly.
+
+```javascript
+do {
+    if (condition) {
+        continue;
+    }
+} while (condition);
+```
+
+## Nested `do...while`
+
+A `do...while` loop can be placed inside another `do...while` loop.
+
+```javascript
+do {
+
+    do {
+
+    } while (condition);
+
+} while (condition);
+```
+
+Useful for:
+
+* Patterns
+* Matrices
+* Menu systems
+
+## Common Uses
+
+* Menu-driven programs
+* User input validation
+* Retry operations
+* Password attempts
+* Programs that must execute at least once
+* Repeated calculations
+
+## `for` vs `while` vs `do...while`
+
+| `for`                                  | `while`                    | `do...while`               |
+| -------------------------------------- | -------------------------- | -------------------------- |
+| Iterations usually known               | Iterations usually unknown | Must execute at least once |
+| Condition before execution             | Condition before execution | Condition after execution  |
+| Initialization/update usually together | Managed separately         | Managed separately         |
+
+## Infinite Loop
+
+If the condition never becomes `false`, it becomes an infinite loop.
+
+```javascript
+do {
+    console.log("Hello");
+} while (true);
+```
+
+## Important Point
+
+Don't forget the **semicolon** after the `while` condition:
+
+```javascript
+do {
+    console.log("Hello");
+} while (condition);
+```
+
+
+
+## Quick Revision
+
+```text
+do...while = Body → Update → Condition → Repeat
+
+break    → Exit loop
+continue → Skip current iteration
+```
+
+**Main point:** `do...while` guarantees that the loop body executes **at least once**.
