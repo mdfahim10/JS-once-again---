@@ -1,0 +1,165 @@
+# JavaScript — `for`, `for...in`, `forEach()`
+
+## 1. `for` Loop
+
+Used when you want to repeat code and generally know the number of iterations.
+
+### Syntax
+
+```javascript
+for (initialization; condition; update) {
+    // code
+}
+```
+
+### Example
+
+```javascript
+let arr = [10, 20, 30];
+
+for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+}
+```
+
+### Important
+
+* Works with indexes.
+* Best for precise control over the loop.
+* Supports `break` and `continue`.
+* Commonly used with arrays and strings.
+
+---
+
+# 2. `for...in`
+
+Used to iterate over the **keys/properties** of an object.
+
+### Syntax
+
+```javascript
+for (let key in object) {
+    // code
+}
+```
+
+### Example
+
+```javascript
+let user = {
+    name: "Alex",
+    age: 22,
+    city: "Kolkata"
+};
+
+for (let key in user) {
+    console.log(key, user[key]);
+}
+```
+
+Output:
+
+```text
+name Alex
+age 22
+city Kolkata
+```
+
+### With Array
+
+```javascript
+let arr = ["A", "B", "C"];
+
+for (let index in arr) {
+    console.log(index, arr[index]);
+}
+```
+
+### Important
+
+* `for...in` gives **keys/indexes**, not directly the values.
+* Mainly recommended for **objects**.
+* For arrays, prefer `for...of` or `forEach()`.
+
+---
+
+# 3. `forEach()`
+
+`forEach()` is an **array method** used to execute a function for every element.
+
+### Syntax
+
+```javascript
+array.forEach(function(value, index, array) {
+    // code
+});
+```
+
+### Example
+
+```javascript
+let arr = [10, 20, 30];
+
+arr.forEach(function(value) {
+    console.log(value);
+});
+```
+
+### Arrow Function
+
+```javascript
+arr.forEach((value) => {
+    console.log(value);
+});
+```
+
+### With Index
+
+```javascript
+arr.forEach((value, index) => {
+    console.log(index, value);
+});
+```
+
+---
+
+# Difference
+
+| `for`                            | `for...in`         | `forEach()`                    |
+| -------------------------------- | ------------------ | ------------------------------ |
+| General loop                     | Object properties  | Array method                   |
+| Gives index manually             | Gives keys/indexes | Gives values                   |
+| Full control                     | Best for objects   | Best for array iteration       |
+| Supports `break`                 | Supports `break`   | Cannot directly use `break`    |
+| Can use `continue`               | Can use `continue` | Cannot directly use `continue` |
+| Works with arrays, strings, etc. | Mainly objects     | Arrays                         |
+
+---
+
+# Quick Revision
+
+```text
+for
+→ General-purpose loop
+→ Index-based
+→ Maximum control
+
+for...in
+→ Object
+→ Gives keys
+
+forEach()
+→ Array
+→ Gives values
+→ Executes callback for every element
+```
+
+### Remember
+
+```javascript
+for          → index/control
+for...in     → keys
+forEach()    → values
+```
+
+**Bonus:** For arrays, `for...of` gives **values directly**, so it is often preferable to `for...in`.
