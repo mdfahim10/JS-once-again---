@@ -1,0 +1,306 @@
+# JavaScript — `filter()`, `map()` & `reduce()`
+
+These are **higher-order array methods**. They take a **callback function** and are heavily used in modern JavaScript, especially in MERN development.
+
+---
+
+# 1. `filter()`
+
+### What does it do?
+
+`filter()` creates a **new array** containing only the elements that satisfy a condition.
+
+### Syntax
+
+```javascript
+array.filter((value, index, array) => {
+    return condition;
+});
+```
+
+### Example
+
+```javascript
+let numbers = [10, 15, 20, 25, 30];
+
+let result = numbers.filter((num) => {
+    return num > 20;
+});
+
+console.log(result);
+```
+
+Output:
+
+```text
+[25, 30]
+```
+
+### Short Form
+
+```javascript
+let result = numbers.filter(num => num > 20);
+```
+
+### Important
+
+```text
+filter()
+→ Checks condition
+→ Returns matching elements
+→ Returns a NEW array
+→ Original array is not changed
+```
+
+---
+
+# 2. `map()`
+
+### What does it do?
+
+`map()` creates a **new array** by transforming every element.
+
+### Syntax
+
+```javascript
+array.map((value, index, array) => {
+    return newValue;
+});
+```
+
+### Example
+
+```javascript
+let numbers = [1, 2, 3, 4, 5];
+
+let squares = numbers.map((num) => {
+    return num * num;
+});
+
+console.log(squares);
+```
+
+Output:
+
+```text
+[1, 4, 9, 16, 25]
+```
+
+### Short Form
+
+```javascript
+let squares = numbers.map(num => num * num);
+```
+
+### Important
+
+```text
+map()
+→ Transforms every element
+→ Returns a NEW array
+→ Usually same number of elements
+→ Original array is not changed
+```
+
+---
+
+# 3. `reduce()`
+
+### What does it do?
+
+`reduce()` reduces an entire array to **one final value**.
+
+It can be used for:
+
+* Sum
+* Product
+* Maximum/minimum
+* Counting
+* Creating objects
+* Many other calculations
+
+### Syntax
+
+```javascript
+array.reduce((accumulator, currentValue) => {
+    return updatedAccumulator;
+}, initialValue);
+```
+
+### Example: Sum
+
+```javascript
+let numbers = [10, 20, 30, 40];
+
+let sum = numbers.reduce((acc, num) => {
+    return acc + num;
+}, 0);
+
+console.log(sum);
+```
+
+Output:
+
+```text
+100
+```
+
+### Short Form
+
+```javascript
+let sum = numbers.reduce((acc, num) => acc + num, 0);
+```
+
+---
+
+# How `reduce()` Works
+
+For:
+
+```javascript
+let numbers = [10, 20, 30];
+```
+
+```javascript
+numbers.reduce((acc, num) => acc + num, 0);
+```
+
+| Step | `acc` | `num` | Result |
+| ---- | ----: | ----: | -----: |
+| 1    |     0 |    10 |     10 |
+| 2    |    10 |    20 |     30 |
+| 3    |    30 |    30 |     60 |
+
+Final result:
+
+```text
+60
+```
+
+---
+
+# `filter()` vs `map()` vs `reduce()`
+
+| Method     | Purpose            | Returns      |
+| ---------- | ------------------ | ------------ |
+| `filter()` | Select elements    | New array    |
+| `map()`    | Transform elements | New array    |
+| `reduce()` | Combine elements   | Single value |
+
+### Easy Trick
+
+```text
+filter → Which elements do I WANT?
+
+map    → What do I want to CHANGE?
+
+reduce → What final VALUE do I want?
+```
+
+---
+
+# Using Them Together
+
+This is very common in real projects.
+
+```javascript
+let products = [
+    { name: "Laptop", price: 80000 },
+    { name: "Mouse", price: 1000 },
+    { name: "Keyboard", price: 2000 },
+    { name: "Phone", price: 50000 }
+];
+
+let result = products
+    .filter(product => product.price > 5000)
+    .map(product => product.price)
+    .reduce((total, price) => total + price, 0);
+
+console.log(result);
+```
+
+Flow:
+
+```text
+products
+   ↓
+filter()
+   ↓
+Expensive products
+   ↓
+map()
+   ↓
+Only prices
+   ↓
+reduce()
+   ↓
+Total price
+```
+
+---
+
+# Important Interview Points
+
+### `filter()`
+
+```javascript
+[1, 2, 3, 4].filter(num => num > 2);
+```
+
+```text
+[3, 4]
+```
+
+### `map()`
+
+```javascript
+[1, 2, 3, 4].map(num => num * 2);
+```
+
+```text
+[2, 4, 6, 8]
+```
+
+### `reduce()`
+
+```javascript
+[1, 2, 3, 4].reduce((sum, num) => sum + num, 0);
+```
+
+```text
+10
+```
+
+---
+
+# Callback Parameters
+
+All three can receive:
+
+```javascript
+(value, index, array)
+```
+
+Example:
+
+```javascript
+let numbers = [10, 20, 30];
+
+numbers.map((value, index, array) => {
+    console.log(value);
+    console.log(index);
+    console.log(array);
+});
+```
+
+---
+
+# One-Line Revision
+
+```text
+filter() → Select
+map()    → Transform
+reduce() → Accumulate
+```
+
+**Remember:** `filter()` and `map()` normally return **new arrays**, while `reduce()` normally returns **one accumulated value**.
