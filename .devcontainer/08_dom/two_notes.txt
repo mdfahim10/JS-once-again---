@@ -1,0 +1,445 @@
+# DOM Traversal & Element Creation — Notes
+
+## 1. Select the Parent
+
+```javascript
+const parent = document.querySelector(".parent");
+```
+
+* Selects the first element having class `.parent`.
+* Here, it selects the main `<div>` containing all days.
+
+---
+
+## 2. Select the First Day
+
+```javascript
+const firstDay = document.querySelector(".day");
+```
+
+* `querySelector()` returns **only the first matching element**.
+* Here → `Monday`.
+
+---
+
+## 3. Select All Days
+
+```javascript
+const days = document.querySelectorAll(".day");
+```
+
+* `querySelectorAll()` returns **all matching elements**.
+* Returns a **NodeList**.
+
+```javascript
+days[0] // Monday
+days[1] // Tuesday
+days[6] // Sunday
+```
+
+---
+
+# DOM Traversal
+
+## 4. `parentElement`
+
+```javascript
+firstDay.parentElement;
+```
+
+Returns the parent of the selected element.
+
+```text
+Monday
+   ↑
+.parent
+```
+
+---
+
+## 5. `children`
+
+```javascript
+parent.children;
+```
+
+Returns all **child elements**.
+
+In your example:
+
+```text
+Monday
+Tuesday
+Wednesday
+Thursday
+Friday
+Saturday
+Sunday
+```
+
+Returns an **HTMLCollection**.
+
+---
+
+## 6. `firstElementChild`
+
+```javascript
+parent.firstElementChild;
+```
+
+Returns:
+
+```text
+Monday
+```
+
+---
+
+## 7. `lastElementChild`
+
+```javascript
+parent.lastElementChild;
+```
+
+Returns:
+
+```text
+Sunday
+```
+
+---
+
+## 8. `nextElementSibling`
+
+```javascript
+firstDay.nextElementSibling;
+```
+
+Returns the element immediately after `Monday`.
+
+```text
+Monday → Tuesday
+```
+
+So it returns:
+
+```text
+Tuesday
+```
+
+---
+
+## 9. `previousElementSibling`
+
+```javascript
+firstDay.previousElementSibling;
+```
+
+Returns the element immediately before the selected element.
+
+For `Monday`, there is no previous element, so:
+
+```javascript
+null
+```
+
+---
+
+# Creating Elements
+
+## 10. `createElement()`
+
+```javascript
+const newDay = document.createElement("div");
+```
+
+Creates a new `<div>` in memory.
+
+It is **not yet visible** on the webpage.
+
+---
+
+## 11. Add Class
+
+```javascript
+newDay.className = "day";
+```
+
+Creates:
+
+```html
+<div class="day"></div>
+```
+
+---
+
+## 12. Add Text
+
+```javascript
+newDay.textContent = "New Day";
+```
+
+Creates:
+
+```html
+<div class="day">New Day</div>
+```
+
+---
+
+# Adding Elements
+
+## 13. `appendChild()`
+
+```javascript
+parent.appendChild(newDay);
+```
+
+Adds the element as the **last child**.
+
+Before:
+
+```text
+Saturday
+Sunday
+```
+
+After:
+
+```text
+Saturday
+Sunday
+New Day
+```
+
+---
+
+## 14. `append()`
+
+```javascript
+parent.append(newDay);
+```
+
+Also adds content at the end.
+
+It can add multiple elements or text.
+
+---
+
+## 15. `prepend()`
+
+```javascript
+parent.prepend(newDay);
+```
+
+Adds the element at the **beginning**.
+
+Before:
+
+```text
+Monday
+Tuesday
+```
+
+After:
+
+```text
+New Day
+Monday
+Tuesday
+```
+
+---
+
+## 16. `insertBefore()`
+
+```javascript
+parent.insertBefore(newElement, tuesday);
+```
+
+Adds `newElement` **before Tuesday**.
+
+Before:
+
+```text
+Monday
+Tuesday
+Wednesday
+```
+
+After:
+
+```text
+Monday
+New Day
+Tuesday
+Wednesday
+```
+
+---
+
+# Modifying Elements
+
+## 17. `textContent`
+
+```javascript
+firstDay.textContent = "Monday Updated";
+```
+
+Changes the text.
+
+---
+
+## 18. `innerHTML`
+
+```javascript
+firstDay.innerHTML = "<strong>Monday</strong>";
+```
+
+Allows HTML to be inserted inside the element.
+
+### Difference
+
+```javascript
+element.textContent = "<strong>Hello</strong>";
+```
+
+Displays the tags as text.
+
+```javascript
+element.innerHTML = "<strong>Hello</strong>";
+```
+
+Creates an actual `<strong>` element.
+
+---
+
+# Attributes
+
+## 19. `setAttribute()`
+
+```javascript
+firstDay.setAttribute("id", "first-day");
+```
+
+Creates:
+
+```html
+<div class="day" id="first-day">
+```
+
+Another example:
+
+```javascript
+firstDay.setAttribute("data-day", "1");
+```
+
+---
+
+# Removing Elements
+
+## 20. `remove()`
+
+```javascript
+lastDay.remove();
+```
+
+Removes the selected element from the DOM.
+
+---
+
+# Loop Through Days
+
+```javascript
+const allDays = parent.querySelectorAll(".day");
+
+allDays.forEach((day, index) => {
+    console.log(index, day.textContent);
+});
+```
+
+* `day` → current element
+* `index` → current index
+
+---
+
+# Important DOM Relationships
+
+```text
+parentElement
+     ↑
+     │
+   Monday
+     │
+     ↓
+nextElementSibling → Tuesday
+```
+
+For the parent:
+
+```text
+.parent
+   │
+   ├── firstElementChild → Monday
+   │
+   ├── children → All days
+   │
+   └── lastElementChild → Sunday
+```
+
+---
+
+# Most Important Methods
+
+| Method / Property        | Purpose                       |
+| ------------------------ | ----------------------------- |
+| `querySelector()`        | Select first matching element |
+| `querySelectorAll()`     | Select all matching elements  |
+| `parentElement`          | Get parent                    |
+| `children`               | Get child elements            |
+| `firstElementChild`      | Get first child               |
+| `lastElementChild`       | Get last child                |
+| `nextElementSibling`     | Get next element              |
+| `previousElementSibling` | Get previous element          |
+| `createElement()`        | Create element                |
+| `textContent`            | Change text                   |
+| `innerHTML`              | Change HTML                   |
+| `className`              | Set class                     |
+| `setAttribute()`         | Set attribute                 |
+| `appendChild()`          | Add at end                    |
+| `append()`               | Add at end                    |
+| `prepend()`              | Add at beginning              |
+| `insertBefore()`         | Insert before another element |
+| `remove()`               | Remove element                |
+
+## ⭐ Quick Revision
+
+```text
+Select → querySelector / querySelectorAll
+
+Parent → parentElement
+
+Children → children
+
+First → firstElementChild
+
+Last → lastElementChild
+
+Next → nextElementSibling
+
+Previous → previousElementSibling
+
+Create → createElement()
+
+Add → append() / appendChild()
+
+Beginning → prepend()
+
+Before → insertBefore()
+
+Modify → textContent / innerHTML
+
+Attribute → setAttribute()
+
+Remove → remove()
+```

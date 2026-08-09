@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+
+<body style="background-color: #212121; color:#fff">
+
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+        <div class="day">Friday</div>
+        <div class="day">Saturday</div>
+        <div class="day">Sunday</div>
+    </div>
+
+    <script>
+
+        // Select parent
+
+        const parent = document.querySelector(".parent");
+
+
+        // Select first day
+
+        const firstDay = document.querySelector(".day");
+
+        console.log(firstDay);
+        console.log(firstDay.textContent);
+
+
+        // Select all days
+
+        const days = document.querySelectorAll(".day");
+
+        console.log(days);
+
+
+        // Access elements
+
+        console.log(days[0]);
+        console.log(days[1]);
+        console.log(days[6]);
+
+
+        // Change text
+
+        firstDay.textContent = "Monday Updated";
+
+
+        // Change HTML
+
+        firstDay.innerHTML = "<strong>Monday</strong>";
+
+
+        // Change style
+
+        firstDay.style.color = "yellow";
+        firstDay.style.padding = "10px";
+
+
+        // Create new element
+
+        const newDay = document.createElement("div");
+
+        newDay.className = "day";
+        newDay.textContent = "New Day";
+
+
+        // Add new element at the end
+
+        parent.appendChild(newDay);
+
+
+        // Create another element
+
+        const newDay2 = document.createElement("div");
+
+        newDay2.className = "day";
+        newDay2.textContent = "Another Day";
+
+
+        // Append
+
+        parent.append(newDay2);
+
+
+        // Create element at beginning
+
+        const first = document.createElement("div");
+
+        first.className = "day";
+        first.textContent = "First Day";
+
+
+        parent.prepend(first);
+
+
+        // Create element before Tuesday
+
+        const newElement = document.createElement("div");
+
+        newElement.className = "day";
+        newElement.textContent = "Inserted Day";
+
+
+        const tuesday = days[1];
+
+        parent.insertBefore(newElement, tuesday);
+
+
+        // Add attribute
+
+        firstDay.setAttribute("id", "first-day");
+
+        firstDay.setAttribute("data-day", "1");
+
+
+        // Access parent
+
+        console.log(firstDay.parentElement);
+
+
+        // Access children
+
+        console.log(parent.children);
+
+
+        // First child
+
+        console.log(parent.firstElementChild);
+
+
+        // Last child
+
+        console.log(parent.lastElementChild);
+
+
+        // Next sibling
+
+        console.log(firstDay.nextElementSibling);
+
+
+        // Previous sibling
+
+        console.log(firstDay.previousElementSibling);
+
+
+        // Remove element
+
+        const lastDay = parent.lastElementChild;
+
+        lastDay.remove();
+
+
+        // Count children
+
+        console.log(parent.children.length);
+
+
+        // Loop through all days
+
+        const allDays = parent.querySelectorAll(".day");
+
+        allDays.forEach((day, index) => {
+            console.log(index, day.textContent);
+        });
+
+    </script>
+
+</body>
+</html>

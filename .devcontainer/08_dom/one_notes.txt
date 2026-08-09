@@ -1,0 +1,382 @@
+# JavaScript DOM Selectors, NodeList & HTMLCollection — Notes
+
+## 1. DOM
+
+**DOM (Document Object Model)** represents an HTML document as a tree of objects.
+
+JavaScript uses the DOM to:
+
+* Select elements
+* Change content
+* Change styles
+* Add/remove elements
+* Handle events
+
+---
+
+# 2. DOM Selectors
+
+## `getElementById()`
+
+Selects **one element** by its `id`.
+
+```javascript
+document.getElementById("title");
+```
+
+---
+
+## `getElementsByClassName()`
+
+Selects elements having a particular class.
+
+```javascript
+document.getElementsByClassName("text");
+```
+
+Returns an **HTMLCollection**.
+
+---
+
+## `getElementsByTagName()`
+
+Selects elements by tag name.
+
+```javascript
+document.getElementsByTagName("p");
+```
+
+Returns an **HTMLCollection**.
+
+---
+
+## `getElementsByName()`
+
+Selects elements using the `name` attribute.
+
+```javascript
+document.getElementsByName("username");
+```
+
+---
+
+## `querySelector()`
+
+Returns the **first matching element**.
+
+```javascript
+document.querySelector(".text");
+
+document.querySelector("#title");
+
+document.querySelector("p");
+```
+
+Uses **CSS selectors**.
+
+---
+
+## `querySelectorAll()`
+
+Returns **all matching elements**.
+
+```javascript
+document.querySelectorAll(".text");
+```
+
+Returns a **NodeList**.
+
+---
+
+# 3. CSS Selectors with `querySelector`
+
+### ID
+
+```javascript
+document.querySelector("#title");
+```
+
+### Class
+
+```javascript
+document.querySelector(".text");
+```
+
+### Tag
+
+```javascript
+document.querySelector("p");
+```
+
+### Multiple Selectors
+
+```javascript
+document.querySelectorAll("p, span");
+```
+
+### Descendant
+
+```javascript
+document.querySelectorAll("#container .item");
+```
+
+### Direct Child
+
+```javascript
+document.querySelectorAll("#container > .item");
+```
+
+### Attribute
+
+```javascript
+document.querySelector('[name="username"]');
+```
+
+---
+
+# 4. NodeList
+
+A **NodeList** is a collection of DOM nodes.
+
+Usually obtained using:
+
+```javascript
+document.querySelectorAll();
+```
+
+Example:
+
+```javascript
+const list = document.querySelectorAll(".item");
+```
+
+### Access Elements
+
+```javascript
+list[0];
+list[1];
+```
+
+### Length
+
+```javascript
+list.length;
+```
+
+### `forEach()`
+
+```javascript
+list.forEach(element => {
+    console.log(element);
+});
+```
+
+### Convert to Array
+
+```javascript
+Array.from(list);
+```
+
+or
+
+```javascript
+[...list];
+```
+
+---
+
+# 5. HTMLCollection
+
+An **HTMLCollection** is a collection of HTML elements.
+
+Usually obtained using:
+
+```javascript
+getElementsByClassName()
+getElementsByTagName()
+```
+
+Example:
+
+```javascript
+const collection = document.getElementsByClassName("item");
+```
+
+### Access
+
+```javascript
+collection[0];
+```
+
+### Length
+
+```javascript
+collection.length;
+```
+
+### Loop
+
+```javascript
+for (let i = 0; i < collection.length; i++) {
+    console.log(collection[i]);
+}
+```
+
+### Convert to Array
+
+```javascript
+Array.from(collection);
+```
+
+or
+
+```javascript
+[...collection];
+```
+
+---
+
+# 6. NodeList vs HTMLCollection
+
+| NodeList                                  | HTMLCollection                         |
+| ----------------------------------------- | -------------------------------------- |
+| Collection of nodes                       | Collection of HTML elements            |
+| `querySelectorAll()`                      | `getElementsByClassName()`             |
+| `getElementsByName()` can return NodeList | `getElementsByTagName()`               |
+| Can use `forEach()`                       | No direct `forEach()` in the usual API |
+| Can be static or live                     | Usually live                           |
+| Supports indexing                         | Supports indexing                      |
+
+---
+
+# 7. Static vs Live Collection
+
+### `querySelectorAll()` → Static
+
+The NodeList doesn't automatically update when matching elements are added/removed.
+
+```javascript
+const list = document.querySelectorAll(".item");
+```
+
+### `getElementsByClassName()` → Live
+
+The HTMLCollection automatically reflects DOM changes.
+
+```javascript
+const list = document.getElementsByClassName("item");
+```
+
+---
+
+# 8. DOM Traversal
+
+## `parentElement`
+
+Gets the parent element.
+
+```javascript
+element.parentElement;
+```
+
+## `children`
+
+Gets child **elements**.
+
+```javascript
+element.children;
+```
+
+## `firstElementChild`
+
+```javascript
+element.firstElementChild;
+```
+
+## `lastElementChild`
+
+```javascript
+element.lastElementChild;
+```
+
+## `nextElementSibling`
+
+```javascript
+element.nextElementSibling;
+```
+
+## `previousElementSibling`
+
+```javascript
+element.previousElementSibling;
+```
+
+---
+
+# 9. `closest()`
+
+Finds the nearest ancestor that matches a selector.
+
+```javascript
+element.closest(".container");
+```
+
+---
+
+# 10. `matches()`
+
+Checks whether an element matches a CSS selector.
+
+```javascript
+element.matches(".item");
+```
+
+Returns:
+
+```javascript
+true
+```
+
+or
+
+```javascript
+false
+```
+
+---
+
+# 11. `contains()`
+
+Checks whether one element contains another element.
+
+```javascript
+parent.contains(child);
+```
+
+Returns `true` or `false`.
+
+---
+
+# Most Important Selectors
+
+```text
+getElementById()       → One element
+getElementsByClassName → HTMLCollection
+getElementsByTagName   → HTMLCollection
+getElementsByName      → NodeList
+querySelector()        → First matching element
+querySelectorAll()     → NodeList
+```
+
+## ⭐ Remember
+
+```text
+querySelector()    → First
+querySelectorAll() → All
+
+getElementById()   → One
+
+getElementsBy...   → Collection
+```
+
+For modern JavaScript, **`querySelector()` and `querySelectorAll()` are the most flexible selectors** because they support standard CSS selector syntax.

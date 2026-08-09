@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Edit & Remove</title>
+
+    <style>
+        body {
+            background-color: #212121;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        .parent {
+            margin-top: 20px;
+        }
+
+        .day {
+            padding: 10px;
+            margin: 5px;
+            background-color: #333;
+        }
+
+        button {
+            margin: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="heading">DOM Manipulation</h1>
+
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+        <div class="day">Friday</div>
+        <div class="day">Saturday</div>
+        <div class="day">Sunday</div>
+    </div>
+
+    <button id="edit">Edit Monday</button>
+    <button id="remove">Remove Wednesday</button>
+    <button id="add">Add New Day</button>
+    <button id="replace">Replace Tuesday</button>
+    <button id="removeLast">Remove Last</button>
+    <button id="removeAll">Remove All</button>
+
+    <script>
+
+        const parent = document.querySelector(".parent");
+        const heading = document.querySelector("#heading");
+
+        const days = document.querySelectorAll(".day");
+
+        // Edit
+
+        document.querySelector("#edit").addEventListener("click", () => {
+            days[0].textContent = "Updated Monday";
+            days[0].style.color = "yellow";
+            days[0].classList.add("updated");
+            days[0].setAttribute("title", "Updated Day");
+        });
+
+
+        // Remove
+
+        document.querySelector("#remove").addEventListener("click", () => {
+            days[2].remove();
+        });
+
+
+        // Add
+
+        document.querySelector("#add").addEventListener("click", () => {
+
+            const newDay = document.createElement("div");
+
+            newDay.className = "day";
+            newDay.textContent = "New Day";
+
+            parent.appendChild(newDay);
+        });
+
+
+        // Replace
+
+        document.querySelector("#replace").addEventListener("click", () => {
+
+            const newDay = document.createElement("div");
+
+            newDay.className = "day";
+            newDay.textContent = "Updated Tuesday";
+
+            parent.children[1].replaceWith(newDay);
+        });
+
+
+        // Remove Last
+
+        document.querySelector("#removeLast").addEventListener("click", () => {
+
+            parent.lastElementChild.remove();
+        });
+
+
+        // Remove All
+
+        document.querySelector("#removeAll").addEventListener("click", () => {
+
+            parent.innerHTML = "";
+        });
+
+    </script>
+
+</body>
+</html>

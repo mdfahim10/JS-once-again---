@@ -1,0 +1,168 @@
+# Edit & Remove Elements in DOM
+
+## 1. Edit Element
+
+### Change Text
+
+```javascript
+const heading = document.querySelector("h1");
+
+heading.textContent = "Updated Heading";
+```
+
+### Change HTML
+
+```javascript
+heading.innerHTML = "<span>Updated Heading</span>";
+```
+
+### Change Class
+
+```javascript
+heading.className = "new-heading";
+```
+
+### Add / Remove Class
+
+```javascript
+heading.classList.add("active");
+
+heading.classList.remove("active");
+
+heading.classList.toggle("active");
+```
+
+### Change Style
+
+```javascript
+heading.style.color = "red";
+heading.style.backgroundColor = "black";
+```
+
+### Change Attribute
+
+```javascript
+heading.setAttribute("id", "newId");
+
+heading.setAttribute("title", "Updated Title");
+```
+
+### Remove Attribute
+
+```javascript
+heading.removeAttribute("title");
+```
+
+---
+
+# 2. Remove Element
+
+### `remove()`
+
+```javascript
+const element = document.querySelector(".day");
+
+element.remove();
+```
+
+Removes the selected element directly.
+
+---
+
+### `removeChild()`
+
+```javascript
+const parent = document.querySelector(".parent");
+const child = parent.querySelector(".day");
+
+parent.removeChild(child);
+```
+
+Removes a child through its parent.
+
+---
+
+# 3. Remove Specific Element
+
+```javascript
+const days = document.querySelectorAll(".day");
+
+days[2].remove();
+```
+
+Removes the **third element**.
+
+---
+
+# 4. Remove Last Element
+
+```javascript
+const parent = document.querySelector(".parent");
+
+parent.lastElementChild.remove();
+```
+
+---
+
+# 5. Remove First Element
+
+```javascript
+const parent = document.querySelector(".parent");
+
+parent.firstElementChild.remove();
+```
+
+---
+
+# 6. Remove All Elements
+
+```javascript
+const parent = document.querySelector(".parent");
+
+parent.innerHTML = "";
+```
+
+This removes all content inside the parent.
+
+---
+
+# 7. Replace Element
+
+```javascript
+const parent = document.querySelector(".parent");
+const oldElement = parent.querySelector(".day");
+
+const newElement = document.createElement("div");
+
+newElement.className = "day";
+newElement.textContent = "New Day";
+
+oldElement.replaceWith(newElement);
+```
+
+---
+
+# 8. Replace Text
+
+```javascript
+const day = document.querySelector(".day");
+
+day.textContent = "Updated Monday";
+```
+
+---
+
+# Quick Revision
+
+```text
+Edit Text        → textContent
+Edit HTML        → innerHTML
+Edit Class       → className / classList
+Edit Style       → style
+Edit Attribute   → setAttribute()
+Remove Attribute → removeAttribute()
+Remove Element   → remove()
+Remove Child     → removeChild()
+Replace Element  → replaceWith()
+Remove All       → innerHTML = ""
+```
