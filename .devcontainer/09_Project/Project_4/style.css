@@ -1,0 +1,136 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: system-ui, sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #0d0f14;
+    color: #e5e7eb;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    padding: 18px;
+    border-bottom: 1px solid #252a35;
+    background: #10131a;
+}
+
+nav a {
+    padding: 10px 35px;
+    border-radius: 8px;
+    background: #6366f1;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+#wrapper {
+    width: 600px;
+    margin: 70px auto;
+    padding: 40px;
+    text-align: center;
+    background: #141821;
+    border: 1px solid #272d3a;
+    border-radius: 10px;
+}
+
+h1 {
+    margin: -40px -40px 25px;
+    padding: 20px;
+    background: #10131a;
+    border-bottom: 1px solid #272d3a;
+    color: #f5f5f5;
+    font-size: 32px;
+}
+
+p {
+    font-size: 16px;
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+#guess {
+    display: block;
+    margin-top: 30px;
+    color: #e5e7eb;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#guessField {
+    width: 250px;
+    height: 48px;
+    margin-top: 12px;
+    padding: 8px 12px;
+    border: 1px solid #272d3a;
+    border-radius: 8px;
+    outline: none;
+    background: #0d0f14;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+}
+
+#guessField:focus {
+    border-color: #6366f1;
+}
+
+#subt {
+    display: block;
+    width: 180px;
+    height: 44px;
+    margin: 20px auto;
+    border: 0;
+    border-radius: 8px;
+    background: #6366f1;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#subt:hover {
+    background: #5558d9;
+    transform: translateY(-2px);
+}
+
+.resultParas {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #272d3a;
+}
+
+.guesses {
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: #272d3a;
+    color: #e5e7eb;
+}
+
+.lastResult {
+    color: #818cf8;
+    font-weight: 600;
+}
+
+.lowOrHi {
+    margin-top: 20px;
+    color: #818cf8;
+}
+
+#newGame {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background: #6366f1;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
